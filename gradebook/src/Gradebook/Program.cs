@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Gradebook
 {
@@ -7,42 +7,27 @@ namespace Gradebook
     {
         static void Main(string[] args)
         {
-            double[] numbers = new double[args.Length];
-            double result = 0;
+            List<double> grades = new List<double>();
+            double SumTotal = 0;
 
-            for(int i = 0; i < args.Length; i++)
+            foreach(string arg in args)
             {
                 try
                 {
-                    numbers[i] = Convert.ToDouble(args[i]);
+                    grades.Add(Convert.ToDouble(arg));
                 }
                 catch
                 {
-                    numbers[i] = double.NaN;
-                    Console.WriteLine($"Argument {i} = {args[i]}, is not valid.");
+                    Console.WriteLine($"Argument {arg}, is not valid.");
                 }
             }
-            foreach(double number in numbers)
+            foreach(double number in grades)
             {
-                if(!double.IsNaN(number))
-                {
-                    result += number;
-                }
+                SumTotal += number;
             }
 
-            Console.WriteLine($"Answer = {result}");
-/*
-            if(args.Length == 2)
-            {
-                double a = Convert.ToDouble(args[0]);
-                double b = Convert.ToDouble(args[1]);
-
-                Console.WriteLine($"Answer to {a} + {b} = {a+b}");
-            }
-            else
-            {
-                Console.WriteLine("Please provide 2 numbers.");
-            }*/
+            Console.WriteLine($"Sum is = {SumTotal:N2}");
+            Console.WriteLine($"Average is = {SumTotal/grades.Count:N2}");
         }
     }
 }
