@@ -24,17 +24,11 @@ namespace Gradebook
         public List<double> Grades{private set; get;}
         public string Name {get;}
         
-        public double SumTotal
+        public void ShowStatistics()
         {
-            get
-            {
-                double sum =0;
-                foreach(double num in Grades)
-                {
-                    sum += num;
-                }
-                return sum;
-            }
+            Console.WriteLine($"Average grade for {Name} is = {AverageGrade:N2}");
+            Console.WriteLine($"Highest grade in {Name} is = {HighestGrade:N2}");
+            Console.WriteLine($"Lowest grade in {Name} is = {LowestGrade:N2}");
         }
         public double AverageGrade
         {
@@ -69,6 +63,21 @@ namespace Gradebook
             }
         }
         
+        #endregion
+
+        #region PrivateProperties
+        public double SumTotal
+        {
+            get
+            {
+                double sum =0;
+                foreach(double num in Grades)
+                {
+                    sum += num;
+                }
+                return sum;
+            }
+        }
         #endregion
 
         #region PublicMethods
