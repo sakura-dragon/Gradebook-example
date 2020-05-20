@@ -24,12 +24,6 @@ namespace Gradebook
         public List<double> Grades{private set; get;}
         public string Name {get;}
         
-        public void ShowStatistics()
-        {
-            Console.WriteLine($"Average grade for {Name} is = {AverageGrade:N2}");
-            Console.WriteLine($"Highest grade in {Name} is = {HighestGrade:N2}");
-            Console.WriteLine($"Lowest grade in {Name} is = {LowestGrade:N2}");
-        }
         public double AverageGrade
         {
             get
@@ -81,6 +75,13 @@ namespace Gradebook
         #endregion
 
         #region PublicMethods
+        public void ShowStatistics()
+        {
+            Console.WriteLine($"Average grade for {Name} is = {AverageGrade:N2}");
+            Console.WriteLine($"Highest grade in {Name} is = {HighestGrade:N2}");
+            Console.WriteLine($"Lowest grade in {Name} is = {LowestGrade:N2}");
+        }
+        
         public void ClearGrades()
         {
             Grades = new List<double>();
