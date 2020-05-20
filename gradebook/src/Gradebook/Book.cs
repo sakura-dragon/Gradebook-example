@@ -33,31 +33,49 @@ namespace Gradebook
         {
             Grades = new List<double>();
         }
-        public void AddGrade(double newGrade)
-        {
-            Grades.Add(newGrade);
-        }
-        public void AddGrade(string newGradeString)
+
+        public void AddGrade<T>(T newGrade)
         {
             try
             {
-                AddGrade(Convert.ToDouble(newGradeString));
+                double tempGrade = Convert.ToDouble(newGrade);
+                if(GradeGood(tempGrade)) Grades.Add(tempGrade);
             }
             catch
             {
-                Console.WriteLine($"Argument {newGradeString}, is not valid.");
+                Console.WriteLine($"Argument {newGrade}, is not valid.");
             }
         }
-        public void AddGrades(List<double> newGrades)
+
+        public void AddGrades<T>(List<T> newGrades)
         {
-            Grades.AddRange(newGrades);
-        }
-        public void AddGrades(string[] newGradeStrings)
-        {
-            foreach(string newGradeString in newGradeStrings)
+            foreach(T newGrade in newGrades)
             {
-                AddGrade(newGradeString);
+                AddGrade(newGrade);
             }
+        }
+
+        public void AddGrades<T>(T[] newGrades)
+        {
+            foreach(T newGrade in newGrades)
+            {
+                AddGrade(newGrade);
+            }
+        }
+
+        bool GradeGood(double grade)
+        {
+            if(grade<0)
+            {
+                Console.WriteLine("Grade Invalid, grade is less that zero");
+                return false;
+            }
+            else if(grade>100)
+            {
+                Console.WriteLine("Grade Invalid, grade is greater than 100");
+                return false;
+            }
+            return true;
         }
     }
 }
