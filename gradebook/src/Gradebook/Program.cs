@@ -7,27 +7,12 @@ namespace Gradebook
     {
         static void Main(string[] args)
         {
-            List<double> grades = new List<double>();
-            double SumTotal = 0;
+            Book gradeBook = new Book();
 
-            foreach(string arg in args)
-            {
-                try
-                {
-                    grades.Add(Convert.ToDouble(arg));
-                }
-                catch
-                {
-                    Console.WriteLine($"Argument {arg}, is not valid.");
-                }
-            }
-            foreach(double number in grades)
-            {
-                SumTotal += number;
-            }
+            gradeBook.AddGrades(args);
 
-            Console.WriteLine($"Sum is = {SumTotal:N2}");
-            Console.WriteLine($"Average is = {SumTotal/grades.Count:N2}");
+            Console.WriteLine($"Sum is = {gradeBook.SumTotal:N2}");
+            Console.WriteLine($"Average is = {gradeBook.AverageGrade:N2}");
         }
     }
 }
