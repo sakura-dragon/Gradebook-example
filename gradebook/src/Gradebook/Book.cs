@@ -43,6 +43,31 @@ namespace Gradebook
                 return SumTotal/Grades.Count;
             }
         }
+
+        public double HighestGrade
+        {
+            get
+            {
+                double highGrade = double.MinValue;
+                foreach(double num in Grades)
+                {
+                    highGrade = Math.Max(num, highGrade);
+                }
+                return highGrade;
+            }
+        }
+        public double LowestGrade
+        {
+            get
+            {
+                double lowGrade = double.MaxValue;
+                foreach(double num in Grades)
+                {
+                    lowGrade = Math.Min(num, lowGrade);
+                }
+                return lowGrade;
+            }
+        }
         
         #endregion
 
@@ -88,12 +113,12 @@ namespace Gradebook
         {
             if(grade<0)
             {
-                Console.WriteLine("Grade Invalid, grade is less that zero");
+                Console.WriteLine($"Grade {grade} Invalid, grade is less that zero");
                 return false;
             }
             else if(grade>100)
             {
-                Console.WriteLine("Grade Invalid, grade is greater than 100");
+                Console.WriteLine($"Grade {grade} Invalid, grade is greater than 100");
                 return false;
             }
             return true;
