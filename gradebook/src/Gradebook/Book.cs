@@ -5,11 +5,22 @@ namespace Gradebook
 {
     public class Book
     {
+        #region Constructor
         public Book()
         {
             Grades = new List<double>();
         }
+
+        public Book(string[] newGrades)
+        {
+            Grades = new List<double>();
+            AddGrades(newGrades);
+        }
+        #endregion
+
+        #region PublicProperties
         public List<double> Grades{private set; get;}
+        
         public double SumTotal
         {
             get
@@ -29,6 +40,10 @@ namespace Gradebook
                 return SumTotal/Grades.Count;
             }
         }
+        
+        #endregion
+
+        #region PublicMethods
         public void ClearGrades()
         {
             Grades = new List<double>();
@@ -63,7 +78,10 @@ namespace Gradebook
             }
         }
 
-        bool GradeGood(double grade)
+        #endregion
+
+        #region PrivateMethods
+        private bool GradeGood(double grade)
         {
             if(grade<0)
             {
@@ -77,5 +95,7 @@ namespace Gradebook
             }
             return true;
         }
+
+        #endregion
     }
 }
