@@ -7,11 +7,11 @@ namespace Gradebook
     {
         static void Main(string[] args)
         {
-            Book gradeBook = new Book();
+            Book mathsBook = new Book("Maths");
 
-            gradeBook.AddGrades(args);
+            mathsBook.AddGrades(args);
 
-            Console.WriteLine($"Average is = {gradeBook.AverageGrade:N2}");
+            Console.WriteLine($"Average grade for {mathsBook.Name} is = {mathsBook.AverageGrade:N2}");
         }
     }
 }

@@ -6,13 +6,15 @@ namespace Gradebook
     public class Book
     {
         #region Constructor
-        public Book()
+        public Book(string name)
         {
+            Name = name;
             Grades = new List<double>();
         }
 
-        public Book(string[] newGrades)
+        public Book(string name, string[] newGrades)
         {
+            Name = name;
             Grades = new List<double>();
             AddGrades(newGrades);
         }
@@ -20,6 +22,7 @@ namespace Gradebook
 
         #region PublicProperties
         public List<double> Grades{private set; get;}
+        public string Name {get;}
         
         public double SumTotal
         {
