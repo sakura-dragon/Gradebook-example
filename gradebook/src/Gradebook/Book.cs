@@ -75,11 +75,14 @@ namespace Gradebook
         #endregion
 
         #region PublicMethods
-        public void ShowStatistics()
+        public Statistics GetStatistics()
         {
-            Console.WriteLine($"Average grade for {Name} is = {AverageGrade:N2}");
-            Console.WriteLine($"Highest grade in {Name} is = {HighestGrade:N2}");
-            Console.WriteLine($"Lowest grade in {Name} is = {LowestGrade:N2}");
+            return new Statistics()
+            {
+                Average = AverageGrade,
+                High = HighestGrade,
+                Low = LowestGrade
+            };
         }
         
         public void ClearGrades()
