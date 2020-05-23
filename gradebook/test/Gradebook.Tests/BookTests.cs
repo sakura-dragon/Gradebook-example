@@ -18,9 +18,9 @@ namespace Gradebook.Tests
             var results = book.GetStatistics();
 
             // assert
-            Assert.Equal(85.6, results.Average);
-            Assert.Equal(90.5, results.High);
-            Assert.Equal(77.3, results.Low);
+            Assert.Equal(85.6, results.Average, 1);
+            Assert.Equal(90.5, results.High, 1);
+            Assert.Equal(77.3, results.Low, 1);
         }
     }
 }
