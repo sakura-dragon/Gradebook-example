@@ -81,6 +81,21 @@ namespace Gradebook.Tests
             book.SetName(name);
         }
 
+        /// Strings are imutable!
+        [Fact]
+        public void StringsBehaveLikeValueType()
+        {
+            string name = "Scott";
+            var uppername = MakeUpperCase(name);
+            Assert.Equal("Scott", name);
+            Assert.Equal("SCOTT", uppername);
+        }
+
+        private string MakeUpperCase(string parameter)
+        {
+            return parameter.ToUpper();
+        }
+
         [Fact]
         public void GetBookReturnsDifferentObjects()
         {
