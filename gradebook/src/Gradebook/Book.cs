@@ -56,10 +56,7 @@ namespace Gradebook
                 return lowGrade;
             }
         }
-        
-        #endregion
 
-        #region PrivateProperties
         public double SumTotal
         {
             get
