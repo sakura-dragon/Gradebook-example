@@ -22,7 +22,7 @@ namespace Gradebook
 
         #region PublicProperties
         public List<double> Grades{private set; get;}
-        public string Name {get;}
+        public string Name {private set; get;}
         
         public double AverageGrade
         {
@@ -72,6 +72,11 @@ namespace Gradebook
         #endregion
 
         #region PublicMethods
+        public void SetName(string name)
+        {
+            Name = name;
+        }
+        
         public Statistics GetStatistics()
         {
             return new Statistics()
