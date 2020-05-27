@@ -79,11 +79,32 @@ namespace Gradebook
         
         public Statistics GetStatistics()
         {
+            char letterGrade = new char();
+            switch(AverageGrade)
+            {
+                case var d when d >= 90.0:
+                    letterGrade = 'A';
+                    break;
+                case var d when d >= 80.0:
+                    letterGrade = 'B';
+                    break;
+                case var d when d >= 70.0:
+                    letterGrade = 'C';
+                    break;
+                case var d when d >= 60.0:
+                    letterGrade = 'D';
+                    break;
+                default:
+                    letterGrade = 'F';
+                    break;
+            }
+
             return new Statistics()
             {
                 Average = AverageGrade,
                 High = HighestGrade,
-                Low = LowestGrade
+                Low = LowestGrade,
+                Letter = letterGrade
             };
         }
         
@@ -99,9 +120,22 @@ namespace Gradebook
                 double tempGrade = Convert.ToDouble(newGrade);
                 if(GradeGood(tempGrade)) Grades.Add(tempGrade);
             }
-            catch
+            catch(ArgumentException ex)
             {
-                Console.WriteLine($"Argument {newGrade}, is not valid.");
+                Console.WriteLine(ex.Message);
+            }
+            catch(FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Argument {newGrade} caused and exception: {ex.Message}");
+                throw ex;
+            }
+            finally
+            {
+                Console.WriteLine("Thank you for typing.");
             }
         }
 
