@@ -1,6 +1,6 @@
-./gradebook/.vscode
-./gradebook/src/GradeBook/bin
-./gradebook/src/Gradebook/obj
+gradebook/.vscode
+gradebook/src/GradeBook/bin
+gradebook/src/Gradebook/obj
 
-./gradebook/test/Gradebook.Tests/bin
-./gradebook/test/Gradebook.Tests/obj
+gradebook/test/Gradebook.Tests/bin
+gradebook/test/Gradebook.Tests/obj
