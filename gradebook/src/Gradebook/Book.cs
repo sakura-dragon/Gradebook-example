@@ -121,6 +121,28 @@ namespace Gradebook
             }
         }
 
+        public void AddLetterGrade(char letter)
+        {
+            switch(letter)
+            {
+                case 'A':
+                case 'a':
+                    AddGrade(90);
+                    return;
+                case 'B':
+                case 'b':
+                    AddGrade(80);
+                    return;
+                case 'C':
+                case 'c':
+                    AddGrade(70);
+                    return;
+                default:
+                    AddGrade(0);
+                    return;
+            }
+        }
+
         #endregion
 
         #region PrivateMethods
