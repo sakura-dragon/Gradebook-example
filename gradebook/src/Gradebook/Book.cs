@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 namespace Gradebook
 {
+
+    // Normally stored within it's own file, but being lazy here.
+    // object sender, and EventArgs is used so that anything can be sent.
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
     public class Book
     {
         #region Constructor
@@ -23,6 +28,8 @@ namespace Gradebook
 
         readonly string category;
         public const string CATEGORY = "Science"; // Cannot be changed... ever! Often upper case to identify.
+
+        public event GradeAddedDelegate GradeAdded;
 
         #region PublicProperties
         public List<double> Grades{private set; get;}
@@ -150,6 +157,10 @@ namespace Gradebook
             }
             finally
             {
+                if(GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
                 Console.WriteLine("Thank you for typing.");
             }
         }
