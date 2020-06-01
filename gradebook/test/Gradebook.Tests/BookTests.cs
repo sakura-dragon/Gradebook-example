@@ -39,7 +39,7 @@ namespace Gradebook.Tests
 
             // Lists
             book.AddGrades(new List<double>(){-0.1,100.1});
-            book.AddGrades(new List<string>(){"a", "b", "c"});
+            book.AddGrades(new List<string>(){"A", "b", "c"});
 
             // Arrays
             book.AddGrades(new double[]{-0.1,100.1});
@@ -69,8 +69,12 @@ namespace Gradebook.Tests
             book.AddGrade("0");
             book.AddGrade("100");
 
+            // Letter Grades
+            book.AddGrade('a');
+            book.AddGrade('C');
+
             //* Assert *//
-            Assert.Equal(7,book.Grades.Count);
+            Assert.Equal(9,book.Grades.Count);
         }
 
         [Fact]
@@ -87,9 +91,12 @@ namespace Gradebook.Tests
             // String
             book.AddGrades(new List<string>(){"-0.0", "0.0", "100.0"});
             book.AddGrades(new List<string>(){"-0.0", "0", "100.0"});
+            // Letters
+            book.AddGrades(new List<char>(){'a', 'b', 'c', 'A', 'B', 'C'});
 
             //* Assert *//
-            Assert.Equal(12,book.Grades.Count);
+            Assert.Equal(18,book.Grades.Count);
+            Assert.Equal(48.9, book.GetStatistics().Average,1);
         }
 
         [Fact]
@@ -110,6 +117,7 @@ namespace Gradebook.Tests
 
             //* Assert *//
             Assert.Equal(12,book.Grades.Count);
+            Assert.Equal(33.3, book.GetStatistics().Average,1);
         }
     }
 }

@@ -120,6 +120,17 @@ namespace Gradebook
                 double tempGrade = Convert.ToDouble(newGrade);
                 if(GradeGood(tempGrade)) Grades.Add(tempGrade);
             }
+            catch(InvalidCastException ex)
+            {
+                if(newGrade.GetType() == typeof(char))
+                {
+                    AddLetterGrade(Convert.ToChar(newGrade));
+                }
+                else
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
             catch(ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
@@ -155,20 +166,17 @@ namespace Gradebook
             }
         }
 
-        public void AddLetterGrade(char letter)
+        private void AddLetterGrade(char letter)
         {
-            switch(letter)
+            switch(letter.ToString().ToUpper())
             {
-                case 'A':
-                case 'a':
+                case "A":
                     AddGrade(90);
                     return;
-                case 'B':
-                case 'b':
+                case "B":
                     AddGrade(80);
                     return;
-                case 'C':
-                case 'c':
+                case "C":
                     AddGrade(70);
                     return;
                 default:
