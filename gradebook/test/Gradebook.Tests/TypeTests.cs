@@ -4,31 +4,44 @@ using Xunit;
 namespace Gradebook.Tests
 {
 
+    // This is a variable that I can call like a method, but can call multiple methods i.e. Multi-casting
     public delegate string WriteLogDelegate(string logMessage);
 
     public class TypeTests
     {
+
+        #region Delegate Test
+        int delegateCallCount = 0;
         [Fact]
         public void WriteLogDelegateCanPointToMethod()
         {
             // Arrange
-            WriteLogDelegate log;
-            //log = new WriteLogDelegate(ReturnMessage);
-            log = ReturnMessage; // Line 16 and 17 are the same.
+            WriteLogDelegate log = ReturnMessage;
+            log += new WriteLogDelegate(ReturnMessage);
+            log += IncrementCount; // This is also valid and adds an additional method call.
 
             // Act
             var result = log("Hello!");
 
             // Assert
-            Assert.Equal("Hello!", result);
+            //Assert.Equal("Hello!", result);
+            Assert.Equal(3, delegateCallCount);
         }
 
         // Method does not have to have any names matching,
         // But in and out variables must match.
         private string ReturnMessage(string message)
         {
+            delegateCallCount++;
             return message;
         }
+
+        private string IncrementCount(string message)
+        {
+            delegateCallCount++;
+            return message.ToLower();
+        }
+        #endregion
 
         [Fact]
         public void ValueTypeAlsoPassByValue()
