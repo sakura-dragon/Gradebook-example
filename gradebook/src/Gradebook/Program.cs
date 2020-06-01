@@ -8,7 +8,6 @@ namespace Gradebook
         static void Main(string[] args)
         {
             Book mathsBook = new Book("Maths");
-            string input;
             bool done = false;
 
             mathsBook.AddGrades(args);
@@ -17,7 +16,7 @@ namespace Gradebook
             {
                 Console.WriteLine($"{mathsBook.Grades.Count} Added to {mathsBook.Name} grades book");
                 Console.WriteLine("Please enter a new single grade, or single letter grade, or enter \"q\" to exit and compute the statistics.");
-                input = Console.ReadLine();
+                string input = Console.ReadLine();
 
                 if(input.ToUpper() == "Q") done = true;
                 else mathsBook.AddGrade(input);
