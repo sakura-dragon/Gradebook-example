@@ -9,6 +9,9 @@ namespace Gradebook
         {
             Book mathsBook = new Book("Maths");
             bool done = false;
+            mathsBook.GradeAdded += OnGradeAdded;
+            mathsBook.GradeAdded -= OnGradeAdded;// Removed the previous method.
+            mathsBook.GradeAdded += OnGradeAdded;// There is only one subscription now.
 
             mathsBook.AddGrades(args);
 
@@ -29,6 +32,11 @@ namespace Gradebook
             Console.WriteLine($"Highest grade in {mathsBook.Name} is = {stats.High:N2}");
             Console.WriteLine($"Lowest grade in {mathsBook.Name} is = {stats.Low:N2}");
             Console.WriteLine($"The letter grade in {mathsBook.Name} is = {stats.Letter}");
+        }
+
+        static void OnGradeAdded(object sender, EventArgs e)
+        {
+            Console.WriteLine("A Graded was added.");
         }
     }
 }
