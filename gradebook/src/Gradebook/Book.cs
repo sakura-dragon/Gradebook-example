@@ -10,6 +10,7 @@ namespace Gradebook
         {
             Name = name;
             Grades = new List<double>();
+            category = "Maths"; // only during construction
         }
 
         public Book(string name, string[] newGrades)
@@ -19,6 +20,8 @@ namespace Gradebook
             AddGrades(newGrades);
         }
         #endregion
+
+        readonly string category;
 
         #region PublicProperties
         public List<double> Grades{private set; get;}
