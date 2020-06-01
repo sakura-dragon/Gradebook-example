@@ -3,8 +3,33 @@ using Xunit;
 
 namespace Gradebook.Tests
 {
+
+    public delegate string WriteLogDelegate(string logMessage);
+
     public class TypeTests
     {
+        [Fact]
+        public void WriteLogDelegateCanPointToMethod()
+        {
+            // Arrange
+            WriteLogDelegate log;
+            //log = new WriteLogDelegate(ReturnMessage);
+            log = ReturnMessage; // Line 16 and 17 are the same.
+
+            // Act
+            var result = log("Hello!");
+
+            // Assert
+            Assert.Equal("Hello!", result);
+        }
+
+        // Method does not have to have any names matching,
+        // But in and out variables must match.
+        private string ReturnMessage(string message)
+        {
+            return message;
+        }
+
         [Fact]
         public void ValueTypeAlsoPassByValue()
         {
