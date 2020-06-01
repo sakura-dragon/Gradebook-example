@@ -22,6 +22,7 @@ namespace Gradebook
         #endregion
 
         readonly string category;
+        public const string CATEGORY = "Science"; // Cannot be changed... ever! Often upper case to identify.
 
         #region PublicProperties
         public List<double> Grades{private set; get;}
