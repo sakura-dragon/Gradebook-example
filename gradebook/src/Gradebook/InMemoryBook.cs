@@ -3,36 +3,27 @@ using System.Collections.Generic;
 
 namespace Gradebook
 {
-
-    // Normally stored within it's own file, but being lazy here.
-    // object sender, and EventArgs is used so that anything can be sent.
-    public delegate void GradeAddedDelegate(object sender, EventArgs args);
-
-    public class InMemoryBook : BookBase
+        public class InMemoryBook : Book
     {
         #region Constructor
         public InMemoryBook(string name) : base(name)
         {
-            Name = name;
-            Grades = new List<double>();
             category = "Maths"; // only during construction
         }
 
         public InMemoryBook(string name, string[] newGrades) : base(name)
         {
             Name = name;
-            Grades = new List<double>();
             AddGrades(newGrades);
         }
         #endregion
 
+        public override event GradeAddedDelegate GradeAdded;
+
         readonly string category;
         public const string CATEGORY = "Science"; // Cannot be changed... ever! Often upper case to identify.
 
-        public event GradeAddedDelegate GradeAdded;
-
         #region PublicProperties
-        public List<double> Grades{private set; get;}
         
         public double AverageGrade
         {
@@ -87,7 +78,7 @@ namespace Gradebook
             Name = name;
         }
         
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             char letterGrade = new char();
             switch(AverageGrade)
@@ -164,7 +155,7 @@ namespace Gradebook
             }
         }
 
-        public void AddGrades<T>(List<T> newGrades)
+        public override void AddGrades<T>(List<T> newGrades)
         {
             foreach(T newGrade in newGrades)
             {
@@ -172,7 +163,7 @@ namespace Gradebook
             }
         }
 
-        public void AddGrades<T>(T[] newGrades)
+        public override void AddGrades<T>(T[] newGrades)
         {
             foreach(T newGrade in newGrades)
             {

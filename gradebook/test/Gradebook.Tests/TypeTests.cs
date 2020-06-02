@@ -78,9 +78,9 @@ namespace Gradebook.Tests
         // "out" can be used instead of "ref", but "out" assumes that the input is not initialised.
         // It's like a constructor, writing an object to the memory location referenced in "out".
         // "out" will force you to initialise the initialiser.
-        private void GetBookSetName(ref Book book, string name)
+        private void GetBookSetName(ref InMemoryBook book, string name)
         {
-            book = new Book(name);
+            book = new InMemoryBook(name);
         }
 
         [Fact]
@@ -96,9 +96,9 @@ namespace Gradebook.Tests
             Assert.Equal("Book 1", book1.Name);
         }
 
-        private void GetBookSetName(Book book, string name)
+        private void GetBookSetName(InMemoryBook book, string name)
         {
-            book = new Book(name);
+            book = new InMemoryBook(name);
         }
 
         [Fact]
@@ -114,7 +114,7 @@ namespace Gradebook.Tests
             Assert.Equal("New Name", book1.Name);
         }
 
-        private void SetName(Book book, string name)
+        private void SetName(InMemoryBook book, string name)
         {
             book.SetName(name);
         }
@@ -163,9 +163,9 @@ namespace Gradebook.Tests
             Assert.True(object.ReferenceEquals(book1, book2));
         }
 
-        private Book GetBook(string name)
+        private InMemoryBook GetBook(string name)
         {
-            return new Book(name);
+            return new InMemoryBook(name);
         }
     }
 }

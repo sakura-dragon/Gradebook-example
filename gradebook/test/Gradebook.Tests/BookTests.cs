@@ -10,7 +10,7 @@ namespace Gradebook.Tests
         public void StatisticsCalculateCorrectly()
         {
             // arrange
-            var book = new Book(" ");
+            var book = new InMemoryBook(" ");
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.3);
@@ -29,7 +29,7 @@ namespace Gradebook.Tests
         public void IncorrectGradesAreRejected()
         {
             //* Arrange *//
-            var book = new Book("Test Book");
+            var book = new InMemoryBook("Test Book");
 
             //* Act *//
             // Singles
@@ -53,7 +53,7 @@ namespace Gradebook.Tests
         public void CorrectSingleGradesAreAdded()
         {
             //* Arrange *//
-            var book = new Book("Test Book");
+            var book = new InMemoryBook("Test Book");
 
             //* Act *//
             // Doubles
@@ -81,7 +81,7 @@ namespace Gradebook.Tests
         public void CorrectListGradesAreAdded()
         {
             //* Arrange *//
-            var book = new Book("Test Book");
+            var book = new InMemoryBook("Test Book");
 
             //* Act *//
             // Double
@@ -103,7 +103,7 @@ namespace Gradebook.Tests
         public void CorrectArrayGradesAreAdded()
         {
             //* Arrange *//
-            var book = new Book("Test Book");
+            var book = new InMemoryBook("Test Book");
 
             //* Act *//
             // Double
