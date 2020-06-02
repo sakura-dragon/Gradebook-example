@@ -8,17 +8,17 @@ namespace Gradebook
     // object sender, and EventArgs is used so that anything can be sent.
     public delegate void GradeAddedDelegate(object sender, EventArgs args);
 
-    public class Book
+    public class Book : NamedObject
     {
         #region Constructor
-        public Book(string name)
+        public Book(string name) : base(name)
         {
             Name = name;
             Grades = new List<double>();
             category = "Maths"; // only during construction
         }
 
-        public Book(string name, string[] newGrades)
+        public Book(string name, string[] newGrades) : base(name)
         {
             Name = name;
             Grades = new List<double>();
@@ -33,7 +33,6 @@ namespace Gradebook
 
         #region PublicProperties
         public List<double> Grades{private set; get;}
-        public string Name {private set; get;}
         
         public double AverageGrade
         {
