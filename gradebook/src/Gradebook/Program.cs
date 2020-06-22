@@ -7,12 +7,12 @@ namespace Gradebook
     {
         static void Main(string[] args)
         {
-            Book book = new InMemoryBook("Maths");
+            IBook book = new InMemoryBook("Maths");
             book.GradeAdded += OnGradeAdded;
             book.GradeAdded -= OnGradeAdded;// Removed the previous method.
             book.GradeAdded += OnGradeAdded;// There is only one subscription now.
 
-            book.AddGrades(args);
+            //book.AddGrades(args);
             EnterGrade(book);
 
             var stats = book.GetStatistics();
@@ -23,7 +23,8 @@ namespace Gradebook
             Console.WriteLine($"The letter grade in {book.Name} is = {stats.Letter}");
         }
 
-        private static bool EnterGrade(Book book)
+        // Main loop for adding grades to the books 
+        private static bool EnterGrade(IBook book)
         {
             bool done = false;
             while (!done)
