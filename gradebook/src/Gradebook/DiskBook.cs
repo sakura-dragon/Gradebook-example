@@ -64,7 +64,16 @@ namespace Gradebook
 
         public override Statistics GetStatistics()
         {
-            throw new NotImplementedException();
+            Statistics stats = new Statistics();
+            using(StreamReader reader = BookDataFile.OpenText())
+            {
+                string line;
+                while((line = reader.ReadLine()) != null)
+                {
+                    stats.AddGrade(double.Parse(line));
+                }
+            }
+            return stats;
         }
     }
 }

@@ -53,7 +53,27 @@ namespace Gradebook
             }
             return true;
         }
-
+        
+        internal void AddLetterGrade(char letter)
+        {
+            double tempGrade;
+            switch(letter.ToString().ToUpper())
+            {
+                case "A":
+                    tempGrade = 90;
+                    break;
+                case "B":
+                    tempGrade = 80;
+                    break;
+                case "C":
+                    tempGrade = 70;
+                    break;
+                default:
+                    tempGrade = 0;
+                    break;
+            }
+            AddGrade(tempGrade);
+        }
         #endregion
 
     }
