@@ -38,5 +38,23 @@ namespace Gradebook
             }
         }
 
+        #region InternalMethods
+        internal bool GradeGood(double grade)
+        {
+            if(grade<0)
+            {
+                Console.WriteLine($"Grade {grade} Invalid, grade is less that zero");
+                return false;
+            }
+            else if(grade>100)
+            {
+                Console.WriteLine($"Grade {grade} Invalid, grade is greater than 100");
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
+
     }
 }
