@@ -18,7 +18,7 @@ namespace Gradebook
 
         public List<double> Grades {internal set; get;}
 
-        public virtual event GradeAddedDelegate GradeAdded;
+        public abstract event GradeAddedDelegate GradeAdded;
 
         public abstract Statistics GetStatistics();
 
