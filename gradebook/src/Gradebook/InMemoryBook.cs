@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Gradebook
 {
-        public class InMemoryBook : Book
+    public class InMemoryBook : Book
     {
         #region Constructor
         public InMemoryBook(string name) : base(name)
@@ -152,22 +152,6 @@ namespace Gradebook
                     GradeAdded(this, new EventArgs());
                 }
                 Console.WriteLine("Thank you for typing.");
-            }
-        }
-
-        public override void AddGrades<T>(List<T> newGrades)
-        {
-            foreach(T newGrade in newGrades)
-            {
-                AddGrade(newGrade);
-            }
-        }
-
-        public override void AddGrades<T>(T[] newGrades)
-        {
-            foreach(T newGrade in newGrades)
-            {
-                AddGrade(newGrade);
             }
         }
 

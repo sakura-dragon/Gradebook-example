@@ -20,19 +20,22 @@ namespace Gradebook
 
         public virtual event GradeAddedDelegate GradeAdded;
 
-        public virtual Statistics GetStatistics()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract Statistics GetStatistics();
 
         public abstract void AddGrade<T>(T newGrade);
         public virtual void AddGrades<T>(List<T> newGrades)
         {
-            throw new NotImplementedException();
+            foreach(T newGrade in newGrades)
+            {
+                AddGrade(newGrade);
+            }
         }
         public virtual void AddGrades<T>(T[] newGrades)
         {
-            throw new NotImplementedException();
+            foreach(T newGrade in newGrades)
+            {
+                AddGrade(newGrade);
+            }
         }
 
     }
