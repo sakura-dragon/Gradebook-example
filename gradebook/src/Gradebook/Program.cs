@@ -7,7 +7,7 @@ namespace Gradebook
     {
         static void Main(string[] args)
         {
-            IBook book = new InMemoryBook("Maths");
+            IBook book = new DiskBook("Maths");
             book.GradeAdded += OnGradeAdded;
             book.GradeAdded -= OnGradeAdded;// Removed the previous method.
             book.GradeAdded += OnGradeAdded;// There is only one subscription now.
