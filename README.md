@@ -1,6 +1,6 @@
 # Gradebook-example
 
-An example project from following a plurasight course, and adding my own flavour to some of the code.
+An example project from following a [plurasight course](https://app.pluralsight.com/library/courses/csharp-fundamentals-dev/table-of-contents), and adding my own flavour to some of the code.
 
 
 This is a command line application that takes a a series of numbers and then calculates a number of
